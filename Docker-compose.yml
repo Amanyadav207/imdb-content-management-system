@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongo:5.0
+    container_name: imdb-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=imdb_content
+    networks:
+      - imdb-network
+
+  # Backend Flask API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: imdb-backend
+    volumes:
+      - ./backend:/app
+      - upload_data:/tmp/imdb_uploads
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb://mongodb:27017/imdb_content
+      - UPLOAD_FOLDER=/tmp/imdb_uploads
+    networks:
+      - imdb-network
+
+  # Frontend Vite React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: imdb-frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - imdb-network
+
+networks:
+  imdb-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  upload_data:

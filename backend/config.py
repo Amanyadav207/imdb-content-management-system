@@ -7,7 +7,7 @@ load_dotenv()
 class Config:
     """Base configuration."""
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-key-please-change-in-production')
-    MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/imdb_content')
+    MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/imdb')
     UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER', '/tmp/imdb_uploads')
     MAX_CONTENT_LENGTH = 1024 * 1024 * 1024  # 1GB max upload size
     ALLOWED_EXTENSIONS = {'csv'}
