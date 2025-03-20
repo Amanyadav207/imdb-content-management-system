@@ -74,7 +74,7 @@ Alternatively, for manual setup:
 4. Create a `.env` file with the following content:
    ```
    FLASK_ENV=development
-   MONGO_URI=mongodb://localhost:27017/imdb_content
+   MONGO_URI=mongodb://localhost:27017/imdb
    UPLOAD_FOLDER=/tmp/imdb_uploads
    ```
 
@@ -114,7 +114,7 @@ Alternatively, for manual setup:
   - `src/`: Source code
     - `components/`: React components
     - `services/`: API services
-    - `styles/`: CSS styles
+    - `pages/`: pages
 
 ## API Endpoints
 
@@ -159,25 +159,3 @@ Toy Story,Toy Story,1995-10-30,en,7.7,5415,81,Animation|Adventure|Comedy,1995
 
 - Add new React components in the `components/` directory
 - Update API service in `services/api.js` for new endpoints
-
-## Production Deployment
-
-For production deployment, you should:
-
-1. Set the `FLASK_ENV` environment variable to `production`
-2. Use a proper MongoDB database with authentication
-3. Set up proper CORS configuration
-4. Build the React application using `npm run build`
-5. Serve the built files using a web server (e.g., Nginx)
-
-## License
-
-[MIT License](LICENSE)
-
-## Acknowledgements
-
-- [Flask](https://flask.palletsprojects.com/)
-- [MongoDB](https://www.mongodb.com/)
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)

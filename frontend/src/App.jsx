@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import FileUploadPage from './fileuploadpage';
-import MovieListPage from './moviepagelist';
+import FileUploadPage from './pages/fileuploadpage';
+import MovieListPage from './pages/moviepagelist';
 
 function App() {
   const [refreshCounter, setRefreshCounter] = useState(0);
